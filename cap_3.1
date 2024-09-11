@@ -67,23 +67,18 @@ def least_squares_loss(y_train, y_predict):
     # Calcula a soma dos erros quadrados
     return np.sum((y_train - y_predict)**2)
 
-# Agora, definimos alguns parâmetros e rodamos a rede neural
 theta_10 =  0.2 ; theta_11 = -1.0
 theta_20 = -1.0  ; theta_21 = 2.0
 theta_30 = -0.5  ; theta_31 = 0.65
 phi_0 = -0.3; phi_1 = 2.0; phi_2 = -1.0; phi_3 = 7.0
 
-# Definimos o intervalo de valores de entrada
 x = np.arange(0,1,0.01)
 
-# Rodamos a rede neural para cada um desses valores de entrada
 y, pre_1, pre_2, pre_3, act_1, act_2, act_3, w_act_1, w_act_2, w_act_3 = \
     shallow_1_1_3(x, ReLU, phi_0,phi_1,phi_2,phi_3, theta_10, theta_11, theta_20, theta_21, theta_30, theta_31)
 
-# E plota os resultados
 plot_neural(x, y, pre_1, pre_2, pre_3, act_1, act_2, act_3, w_act_1, w_act_2, w_act_3, plot_all=True)
 
-# Definimos os dados de treino
 x_train = np.array([0.09291784, 0.46809093, 0.93089486, 0.67612654, 0.73441752, 0.86847339,
                     0.49873225, 0.51083168, 0.18343972, 0.99380898, 0.27840809, 0.38028817,
                     0.12055708, 0.56715537, 0.92005746, 0.77072270, 0.85278176, 0.05315950,
@@ -93,11 +88,10 @@ y_train = np.array([-0.15934537, 0.18195445, 0.45127015, 0.13921448, 0.09366691,
                     0.01906257, 0.3582041, 0.45256496, -0.0183121, 0.02957665, -0.24354444,
                     0.14803884, 0.26824970])
 
-# Rodamos a rede neural nos dados de treino
 y_predict, *_ = shallow_1_1_3(x_train, ReLU, phi_0,phi_1,phi_2,phi_3, theta_10, theta_11, theta_20, theta_21, theta_30, theta_31)
 
-# Calculamos a perda de mínimos quadrados e mostramos o resultado
+
 loss = least_squares_loss(y_train, y_predict)
 print('Your Loss = %3.3f, True value = 9.385' % loss)
 
-# Agora, manipule os parâmetros manualmente para ajustar melhor a função aos dados!
+
